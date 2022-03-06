@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>To Do list</title>
+</head>
+
+<body>
+
+    <h1 class="heading">To Do List</h1>
+    <div class="container">
+        <div class="inputArea">
+            <input id="inputField" type="text"><button id="addTodo">+</button>
+        </div>
+        <div class="to-do" id="todoContainer">
+
+        </div>
+    </div>
+
+    <script>
+        const todoBtn = document.querySelector('#addTodo');
+        const inputField = document.querySelector('#inputField');
+        const todoContainer = document.querySelector('#todoContainer');
+
+        todoBtn.addEventListener('click', function() {
+            // Basic validation
+
+            if (inputField.value == '') {
+                alert('Please fill the box !')
+            } else {
+                const paragraph = document.createElement('p');
+                paragraph.classList.add('bg')
+                paragraph.innerText = inputField.value;
+                todoContainer.appendChild(paragraph);
+
+                // Clear Input field after add Todo 
+
+                inputField.value = '';
+
+
+                paragraph.addEventListener('click', function() {
+                        paragraph.style.textDecoration = 'underline';
+                    })
+                    // Remove 
+                paragraph.addEventListener('dblclick', function() {
+                    todoContainer.removeChild(paragraph);
+                })
+            }
+        })
+    </script>
+
+</body>
+
+</html>
